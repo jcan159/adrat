@@ -1,0 +1,18 @@
+# Rule Health configurable thresholds & toggles
+lookback_hours_default: 720 # 30 days for API probes (if you enable them later)
+max_query_period_hours: 24 # flag if rule.queryPeriod > this without justification
+similarity_threshold: 0.85 # Jaccard similarity to flag possible duplicate rules
+weights: # rubric weights (sum to ~100 is fine)
+LogicCoverage: 30
+SignalQuality: 25
+ThreatInformed: 15
+EvidenceLifecycle: 15
+OutcomeMetrics: 15
+# Lint toggles
+require_time_filter_first: true
+forbid_magic_constants: true
+# Simple regexes you can expand
+regexes:
+time_filter_first: "^\\s*[A-Za-z0-9_]+\\s*\\|\\s*where\\s+TimeGenerated\\s*>?=\\s*ago\\("
+watchlist_usage: "_GetWatchlist|_GetWatchlistAlias"
+asim_usage: "ASIM_\" # loose match for ASIM parsers
